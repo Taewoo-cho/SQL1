@@ -102,6 +102,34 @@ SELECT *
 -- 널값을 검색하기 위해 is NULL 명령어가 존재
 SELECT * FROM employees WHERE commission_pct is null; 
 
+SELECT * FROM employees WHERE commission_pct is not null;
+
+
+-- ORDER BY ASC 오름차순 DESC 내림차순
+SELECT * FROM employees ORDER BY employee_id DESC;
+SELECT * FROM employees ORDER BY employee_id; -- ASC는 생략가능
+
+-- 정렬 열이 2개 이상일때 첫번째 열로 정렬후 두번째 열 정렬
+SELECT department_id, employee_id, first_name, last_name  
+    FROM employees 
+    ORDER BY department_id, employee_id;
+
+-- 예제1
+SELECT employee_id, first_name, last_name
+FROM employees ORDER BY employee_id DESC;
+
+-- 예제2
+SELECT salary, first_name, last_name, job_id
+FROM employees
+WHERE job_id like '%CLERK%'
+ORDER BY salary DESC;
+
+--예제3 정렬마다 DESC 
+SELECT 
+employee_id as 직원번호, first_name as 직원이름, department_id as 부서번호,
+salary as 월급 FROM employees
+WHERE employee_id between 120 and 150
+ORDER BY department_id DESC, salary DESC;
  
 
     
